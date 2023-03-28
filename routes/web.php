@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/settings',[ScolarshipController::class,'create']);
         Route::post('/scolarship/store',[ScolarshipController::class,'store']);
         Route::post('/scolarship/update',[ScolarshipController::class,'update']);
-        Route::get('/scolarship/delete',[ScolarshipController::class,'delete']);
+        Route::get('/scolarship/delete/{id}',[ScolarshipController::class,'delete']);
 
     });
 

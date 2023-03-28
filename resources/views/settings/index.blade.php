@@ -41,7 +41,7 @@
                                 <div class="col-md-4">
                                     <div class="float-right">
                                         <p class="mb-0">Date: {{ $scolarship->end_date }}</p>
-                                        <button class="btn btn-sm btn-danger float-right">Delete</button>
+                                        <button class="btn btn-sm btn-danger float-right" onclick="if(confirm('Etes vous sur de vouloir supprimer cette bourse?')){location.href='/scolarship/delete/'+'{{$scolarship->id}}';}">Supprimer</button>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +158,7 @@
                                 <div class="col-md-4">
                                     <div class="float-right">
                                         <p class="mb-0">Date: {{ $scolarship->end_date }}</p>
-                                        <button class="btn btn-sm btn-danger float-right">Delete</button>
+                                        <button class="btn btn-sm btn-danger float-right" onclick="if(confirm('Etes vous sur de vouloir supprimer cette bourse?')){location.href='/scolarship/delete/'+'{{$scolarship->id}}';}">Supprimer</button>
                                     </div>
                                 </div>
                             </div>
@@ -347,4 +347,13 @@
         </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+
+<script>
+    function deleteScolarship(id) {
+        location.href="/scolarship/delete/"+id;
+    }
+</script>
+
 @endsection
