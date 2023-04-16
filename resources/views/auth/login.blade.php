@@ -5,6 +5,15 @@
 
 
         <div class="main-content">
+            @if($errors->any())
+            <div class="container row alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="header bg-gradient-success py-7 py-lg-8 pt-lg-9">
                 <div class="container">
                     <div class="header-body text-center mb-7">
@@ -21,6 +30,28 @@
                 </div>
             </div>
             <div class="container mt--9 pb-5 text-gray">
+                @if($errors->any())
+                    <div class="container row alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="container">
+                    @if(session('status'))
+                        <div class="alert alert-info">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-7">
                         <div class="card bg-secondary border border-soft mb-0">
@@ -34,7 +65,7 @@
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                <span class="input-group-text"><i class="fa fa-at"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Email" type="email" name="email" required/>
                                         </div>
@@ -42,7 +73,7 @@
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Password" type="password" name="password" required/>
                                         </div>

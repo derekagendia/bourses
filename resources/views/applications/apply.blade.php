@@ -1,16 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <!-- Header -->
-    <div class="header bg-success pb-6">
+    <div class="header  pb-6">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Postuler</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Postuler</a></li>
+                  <li class="breadcrumb-item"><a href="#" class="text-black-50"><i class="fas fa-home text-black-50"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#" class="text-black-50">Postuler</a></li>
                   {{-- <li class="breadcrumb-item active" aria-current="page">Default</li> --}}
                 </ol>
               </nav>
@@ -47,13 +46,29 @@
                           <div class="mb-3">
                               <input type="text" class="form-control" placeholder="Addresse" required name="address">
                           </div>
+
+                          <div class="mb-3">
+                              <input type="text" class="form-control" placeholder="Ville" required name="city">
+                          </div>
+                          <div class="mb-3">
+                              <input type="text" class="form-control" placeholder="Region" required name="region">
+                          </div>
+                            <div class="input-group mb-3" title="Date de naissance">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-birthday-cake"></i>
+                                </span>
+                                <input type="date" class="form-control" placeholder="Date de naissance" required name="dob">
+                            </div>
+                          <div class="mb-3">
+                              <input type="text" class="form-control" placeholder="Lieu de Naissance" required name="pob">
+                          </div>
+
                           </div>
                           <hr>
                           <div class="container-fluid">
                               <h4 class="font-weight-bolder">Telecharger et remplire</h4>
                               <ul class="list-unstyled">
                                   <li class="mb-3"><a href="#">Certificat de candidature</a></li>
-                                  <li class="mb-3"><a href="#">Certificat d'Orientation</a></li>
                               </ul>
 
                           </div>
@@ -71,7 +86,7 @@
                              <div class="col-md-3 mb-3">
                               <select id="" class="form-control" name="first_choice" required>
                                 @foreach (scolarships(request()->segment(2)) as $scolarship)
-                                <option value="{{ $scolarship->id }}">{{ $scolarship->name }}</option>
+                                <option value="{{ $scolarship->id }}">{{ $scolarship->specialty }}</option>
                                 @endforeach
                               </select>
                              </div>
@@ -88,7 +103,7 @@
                               <div class="col-md-3 mb-3">
                                <select id="" class="form-control" name="second_choice" required>
                                 @foreach (scolarships(request()->segment(2)) as $scolarship)
-                                <option value="{{ $scolarship->id }}">{{ $scolarship->name }}</option>
+                                <option value="{{ $scolarship->id }}">{{ $scolarship->specialty }}</option>
                                 @endforeach
                                </select>
                               </div>
@@ -104,7 +119,7 @@
                               <div class="col-md-3 mb-3">
                                <select name="third_choice" id="" class="form-control">
                                 @foreach (scolarships(request()->segment(2)) as $scolarship)
-                                <option value="{{ $scolarship->id }}">{{ $scolarship->name }}</option>
+                                <option value="{{ $scolarship->id }}">{{ $scolarship->specialty }}</option>
                                 @endforeach
                                </select>
                               </div>
@@ -118,17 +133,48 @@
                            <p class="font-weight-bolder">Documents</p>
                            <div class="row">
                             <div class="col-md-6">
+                                <label  id="basic-addon1">Diplomes</label>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">Candidature</span>
-                                    <input type="file" class="form-control" name="candidature">
+                                    <input type="file" class="form-control" name="certificates" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <label  id="basic-addon1">Orientation</label>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">Orientation</span>
-                                    <input type="file" class="form-control" name="orientation">
+                                    <input type="file" class="form-control" name="orientation" required>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <label  id="basic-addon1">Acte Naissance</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="birth_certificate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label  id="basic-addon1">CNI</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="cni" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label  id="basic-addon1">Certificat Medical</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="med_certificate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label  id="basic-addon1">Demande de timbre</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="stamp" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label  id="basic-addon1">Photo 4x4</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="picture" required>
+                                </div>
+                            </div>
+
                            </div>
                          </div>
                          <div class="card-footer">

@@ -73,7 +73,7 @@ class ScolarshipController extends Controller
             'status' => $request->status == null? 0:1,
         ]);
 
-        return back()->with('status','Bourse Modifie avec success');
+        return back()->with('error','Bourse Modifie avec success');
     }
 
     public function delete($id)

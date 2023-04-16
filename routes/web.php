@@ -35,13 +35,14 @@ Route::get('/test', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('auth_welcome');
     })->name('dashboard');
 
     Route::get('/scolarships/{type}',[ScolarshipController::class,'index']);
     Route::get('/applications',[ApplicationsController::class,'index']);
     Route::get('/application/{type}/create',[ApplicationsController::class,'create']);
     Route::post('/application/store',[ApplicationsController::class,'store']);
+    Route::get('/application/download/{id}',[ApplicationsController::class,'downloadPDF']);
     Route::middleware(['can:manage_users'])->group(function ()
     {
         Route::get('/users/{type}',[UsersController::class,'index']);

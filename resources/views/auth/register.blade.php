@@ -23,6 +23,15 @@
             <div class="container mt--9 pb-5 text-gray">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-8">
+                        @if($errors->any())
+                        <div class="container row alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <div class="card bg-secondary border border-soft mb-0">
                             <div class="card-header bg-transparent pb-5">
                                 <div class="text-center mt-2 mb-3 font-weight-bolder">S'Inscrire</div>
@@ -35,7 +44,7 @@
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-merge input-group-alternative">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="ni ni-user"></i></span>
+                                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
                                                     </div>
                                                     <input class="form-control" placeholder="Nom" type="text" name="first_name" required/>
                                                 </div>
@@ -45,7 +54,7 @@
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-merge input-group-alternative">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="ni ni-user"></i></span>
+                                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
                                                     </div>
                                                     <input class="form-control" placeholder="Prenom" type="text" name="last_name"/>
                                                 </div>
@@ -55,7 +64,7 @@
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                <span class="input-group-text"><i class="fa fa-at"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Email" type="email" name="email" required/>
                                         </div>
@@ -63,7 +72,7 @@
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Mot de passe" type="password" name="password" required/>
                                         </div>
@@ -71,7 +80,7 @@
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                                             </div>
                                             <input class="form-control" placeholder="Confirmer Mot de passe" type="password" name="password_confirmation" required/>
                                         </div>

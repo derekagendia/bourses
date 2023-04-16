@@ -21,8 +21,17 @@ class CreateApplicationsTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phone');
+            $table->string('city')->nullable();
+            $table->string('region')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('pob')->nullable();
             $table->string('orientation')->nullable();
-            $table->string('candidature')->nullable();
+            $table->string('certificates')->nullable();
+            $table->string('birth_certificate')->nullable();
+            $table->string('cni')->nullable();
+            $table->string('med_certificate')->nullable();
+            $table->string('stamp')->nullable();
+            $table->string('picture')->nullable();
             $table->string('first_choice');
             $table->string('first_choice_center');
             $table->string('first_choice_location');

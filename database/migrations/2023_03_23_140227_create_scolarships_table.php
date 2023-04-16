@@ -25,7 +25,7 @@ class CreateScolarshipsTable extends Migration
             $table->string('language')->nullable();
             $table->integer('training_period')->nullable();
             $table->string('country')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('status')->default(1)->nullable();
             $table->timestamps();
         });

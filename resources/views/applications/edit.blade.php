@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <!-- Header -->
-    <div class="header bg-success pb-6">
+    <div class="header  pb-6">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Demandes</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
@@ -33,20 +32,27 @@
                   <div class="card">
                       <div class="card-body">
                           <div class="mb-3">
-                              <input type="text" class="form-control" placeholder="Nom" required value="{{ $application->first_name }}" disabled>
+                              <input type="text" class="form-control" placeholder="" required value="{{ $application->first_name }}" disabled>
                           </div>
                           <div class="mb-3">
-                              <input type="text" class="form-control" placeholder="Prenom" required value="{{ $application->last_name }}" disabled>
+                              <input type="text" class="form-control" placeholder="" required value="{{ $application->last_name }}" disabled>
                           </div>
                           <div class="mb-3">
-                              <input type="email" class="form-control" placeholder="Email" required value="{{ $application->email }}" disabled>
+                              <input type="email" class="form-control" placeholder="" required value="{{ $application->email }}" disabled>
                           </div>
                           <div class="mb-3">
-                              <input type="tel" class="form-control" placeholder="Telephone" required value="{{ $application->phone }}" disabled>
+                              <input type="tel" class="form-control" placeholder="" required value="{{ $application->phone }}" disabled>
                           </div>
                           <div class="mb-3">
-                              <input type="text" class="form-control" placeholder="Addresse" required value="{{ $application->address }}" disabled>
+                              <input type="text" class="form-control" placeholder="" required value="{{ $application->address }}" disabled>
                           </div>
+                          <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="" required value="{{ $application->city }}" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="" required value="{{ $application->region }}" disabled>
+                        </div>
+
                           </div>
                           <hr>
                           {{-- <h4 class="font-weight-bolder">Telecharger et remplire</h4>
@@ -97,10 +103,10 @@
                                </select>
                               </div>
                               <div class="col-md-4 mb-3">
-                               <input type="text" class="form-control" placeholder="centre d acceuil" name="second_choice_center" disabled>
+                               <input type="text" class="form-control" placeholder="centre d acceuil" name="second_choice_center" value="{{ $application->second_choice_center }}" disabled>
                               </div>
                               <div class="col-md-4 mb-3">
-                               <input type="text" class="form-control" placeholder="Localite choisi" name="second_choice_location" disabled>
+                               <input type="text" class="form-control" placeholder="Localite choisi" name="second_choice_location" value="{{ $application->second_choice_location }}" disabled>
                               </div>
                            </div>
                            <p class="font-weight-bolder">3eme choix</p>
@@ -113,28 +119,22 @@
                                </select>
                               </div>
                               <div class="col-md-4 mb-3">
-                               <input type="text" class="form-control" placeholder="centre d acceuil" name="third_choice_center" disabled>
+                               <input type="text" class="form-control" placeholder="centre d acceuil" name="third_choice_center" value="{{ $application->third_choice_center }}" disabled>
                               </div>
                               <div class="col-md-4 mb-3">
-                               <input type="text" class="form-control" placeholder="Localite choisi" name="third_choice_location" disabled>
+                               <input type="text" class="form-control" placeholder="Localite choisi" name="third_choice_location" value="{{ $application->third_choice_location }}" disabled>
                               </div>
                            </div>
                            <p class="font-weight-bolder">Documents</p>
-                           <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">Candidature</span>
-                                    <input type="file" class="form-control" name="candidature">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">Orientation</span>
-                                    <input type="file" class="form-control" name="orientation">
-                                </div>
-                            </div>
-                           </div>
-                           <p class="font-weight-bolder">Documents</p>
+                           <ol>
+                            <li><a href="{{ asset('certificates/'.$application->certificates) }}" target="_blank">Diplomes</a></li>
+                            <li><a href="{{ asset('birth_certificate/'.$application->birth_certificate) }}" target="_blank">Acte de Naissance</a></li>
+                            <li><a href="{{ asset('orientation/'.$application->orientation) }}" target="_blank">Orientation</a></li>
+                            <li><a href="{{ asset('cni/'.$application->cni) }}" target="_blank">cni</a></li>
+                            <li><a href="{{ asset('med_certificate/'.$application->med_certificate) }}" target="_blank">Certificat Medical</a></li>
+                            <li><a href="{{ asset('stamp/'.$application->stamp) }}" target="_blank">Demande de timbre</a></li>
+                            <li><a href="{{ asset('picture/'.$application->picture) }}" target="_blank">Photo</a></li>
+                           </ol>
                            <div class="my-3">
                             <label for="exampleFormControlInput1" class="form-label">Statut</label>
                             <select name="status" class="form-control">

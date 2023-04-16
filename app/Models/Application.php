@@ -16,7 +16,12 @@ class Application extends Model
         'address',
         'phone',
         'orientation',
-        'candidature',
+        'certificates',
+        'birth_certificate',
+        'cni',
+        'med_certificate',
+        'stamp',
+        'picture',
         'status',
         'first_choice',
         'first_choice_center',
@@ -28,6 +33,10 @@ class Application extends Model
         'third_choice_center',
         'third_choice_location',
         'user_id',
+        'city',
+        'region',
+        'dob',
+        'pob',
     ];
 
     public function user()

@@ -1,16 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <!-- Header -->
-    <div class="header bg-success pb-6">
+    <div class="header  pb-6">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Parametres</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Utilisateurs</a></li>
+                  <li class="breadcrumb-item"><a href="#" class="text-dark"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#" class="text-dark">Utilisateurs</a></li>
                   {{-- <li class="breadcrumb-item active" aria-current="page">Default</li> --}}
                 </ol>
               </nav>
@@ -27,7 +26,7 @@
                 <div class="card-header">
                     <div class="row align-item-center">
                         <div class="col">
-                            <h6 class="text-light text-uppercase">
+                            <h6 class="text-dark text-uppercase">
                                 Utilisateurs
                             </h6>
                         </div>
@@ -46,13 +45,15 @@
 
                 <div class="card-body">
                    <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" @can('manage_users') id="example" @endcan>
                         <thead class="bg-secondary border-0">
 
                                 <th scope="row" class="sort" data-sort="ref">Nom</th>
                                 <th scope="row" class="sort" data-sort="name">Premom</th>
                                 <th scope="row" class="sort" data-sort="prov">Address mail</th>
+                                @if(request()->segment(2) == 'admin')
                                 <th scope="row" class="sort" data-sort="prov">Mot de passe</th>
+                                @endif
                                 <th scope="row" class="sort" data-sort="prov">Telephone</th>
                                 <th scope="row" class="sort" data-sort="prov">Action</th>
 
@@ -82,7 +83,6 @@
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->user_password }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>
                                         <button class="btn btn-sm btn-danger" onclick="if(confirm('Etes vous sure de vouloir Suprimer cet utilisateur?')){deleteUser({{ $user->id }})}">Suprimer</button>

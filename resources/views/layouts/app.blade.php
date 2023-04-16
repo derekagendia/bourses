@@ -44,6 +44,9 @@
         <link rel="stylesheet" href="{{asset('assets/assets/vendor/fullcalendar/dist/fullcalendar.min.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/css/dashboard.css')}}" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"  />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"  />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     </head>
 
@@ -51,9 +54,10 @@
 
 
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+    {{-- <script src="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"></script> --}}
   <!-- Sidenav -->
-  <nav class="sidenav navbar navbar-vertical fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+  <nav class="sidenav navbar navbar-vertical fixed-left  navbar-expand-xs navbar-success bg-dark-green" id="sidenav-main" style="background-color: #0b5837">
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  d-flex  align-items-center">
@@ -78,40 +82,40 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link {{ request()->segment(1) == 'scolarships' && request()->segment(2) == 'national'?'active':'' }}" href="{{ url('/scolarships/national') }}">
-                <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Bourses National</span>
+                <i class="fa fa-flag text-white"></i>
+                <span class="nav-link-text text-white">Bourses National</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{ request()->segment(1) == 'scolarships' && request()->segment(2) == 'cooperation'?'active':'' }}" href="{{ url('/scolarships/cooperation') }}">
-                <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Bourses De cooperation</span>
+                <i class="fa fa-handshake text-white"></i>
+                <span class="nav-link-text text-white">Bourses De cooperation</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{ request()->segment(1) == 'applications'?'active':'' }}" href="{{ url('/applications') }}">
-                <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Demandes en cours</span>
+                <i class="fa fa-clock text-white"></i>
+                <span class="nav-link-text text-white">Demandes en cours</span>
               </a>
             </li>
             @can('manage_users')
                 <li class="nav-item">
                 <a class="nav-link {{ request()->segment(1) == 'users' && request()->segment(2) == 'admin'?'active':'' }}" href="{{ url('/users/admin') }}">
-                    <i class="ni ni-spaceship"></i>
-                    <span class="nav-link-text">Admins</span>
+                    <i class="fa fa-user-secret text-white"></i>
+                    <span class="nav-link-text text-white">Admins</span>
                 </a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link {{ request()->segment(1) == 'users' && request()->segment(2) == 'user'?'active':'' }}" href="{{ url('/users/user') }}">
-                    <i class="ni ni-spaceship"></i>
-                    <span class="nav-link-text">Utilisateurs</span>
+                    <i class="fa fa-user text-white"></i>
+                    <span class="nav-link-text text-white">Utilisateurs</span>
                 </a>
                 </li>
 
                 <li class="nav-item">
                 <a class="nav-link {{ request()->segment(1) == 'settings'?'active':'' }}" href="{{ url('/settings') }}">
-                    <i class="ni ni-spaceship"></i>
-                    <span class="nav-link-text">Parametres</span>
+                    <i class="fa fa-cog text-white"></i>
+                    <span class="nav-link-text text-white">Parametres</span>
                 </a>
                 </li>
             @endcan
@@ -124,7 +128,7 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-success border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-dark border-bottom">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Search form -->
@@ -166,10 +170,10 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{asset('assets/img/theme/team-4.jpg')}}">
+                    <img alt="Image placeholder" src="{{asset('assets/img/user/img-1.jpg')}}">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->first_name == null?auth()->user()->email:auth()->user()->first_name.' '.auth()->user()->last_name }}</span>
+                    <span class="mb-0 text-sm text-dark  font-weight-bold">{{ auth()->user()->first_name == null?auth()->user()->email:auth()->user()->first_name.' '.auth()->user()->last_name }}</span>
                   </div>
                 </div>
               </a>
@@ -187,10 +191,10 @@
     </nav>
 
     @if (session('error') )
-    <div class="container-fluid alert alert-danger">{{session('error')}}</div>
+    <div class="container alert alert-danger">{{session('error')}}</div>
     @endif
     @if($errors->any())
-    <div class="container-fluid row alert alert-danger">
+    <div class="container row alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -199,7 +203,7 @@
     </div>
     @endif
     @if (session('status'))
-        <div class="container-fluid alert alert-primary">
+        <div class="container alert alert-success">
             {{ session('status') }}
         </div>
     @endif
@@ -251,8 +255,15 @@
 <script src="{{ asset('assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
 <script src="{{ asset('assets/js/dashboard5438.js')}}?v=1.2.0"></script>
 <script src="{{ asset('assets/js/demo.min.js')}}"></script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
   <script>
     document.getElementById('logout').addEventListener('click', () => {
         url = "{{url('/')}}/logout"
@@ -278,7 +289,35 @@
         })
     })
   </script>
-  @yield('scripts')
+
+<script>
+    let errormsg = "{{ session('error')!= null?session('error'):'' }}";
+    let successmsg = "{{ session('status')!= null?session('status'):'' }}";
+    let form_errors = "@php foreach($errors->all() as $error) {echo $error.',';} @endphp"
+    if (errormsg != '') {
+        toastr.error(errormsg)
+    }
+    if (successmsg != '') {
+        toastr.success(successmsg)
+    }
+    if (form_errors != '') {
+        toastr.error(successmsg)
+    }
+</script>
+<script>
+    var datata;
+        $(document).ready(function () {
+            datatb= $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+            console.log(datatb)
+            // datatb.buttons().container().appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+        });
+</script>
+  {{-- @yield('scripts') --}}
 </body>
 
 </html>
