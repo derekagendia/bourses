@@ -57,6 +57,7 @@ class ApplicationsController extends Controller
         $cni = '';
         $med_certificate = '';
         $stamp = '';
+        $handicap = '';
         $picture = '';
         if ($request->hasFile('certificates')) {
             $ext = pathinfo($_FILES['certificates']['name'], PATHINFO_EXTENSION);
@@ -79,6 +80,14 @@ class ApplicationsController extends Controller
                 $birth_certificate = $img_name;
             }
         }
+        if ($request->hasFile('handicap')) {
+            $ext = pathinfo($_FILES['handicap']['name'], PATHINFO_EXTENSION);
+            $img_name=generateRandomString().'.'.$ext;
+            if($request->file('handicap')->move(public_path('handicap'),$img_name)){
+                $handicap = $img_name;
+            }
+        }
+
         if ($request->hasFile('cni')) {
             $ext = pathinfo($_FILES['cni']['name'], PATHINFO_EXTENSION);
             $img_name=generateRandomString().'.'.$ext;
@@ -120,6 +129,8 @@ class ApplicationsController extends Controller
             'certificates' => $certificates,
             'med_certificate' => $med_certificate,
             'birth_certificate' => $birth_certificate,
+            'handicap' => $handicap,
+            'is_handicap' => $request->is_handicap == 1?1:0,
             'stamp' => $stamp,
             'picture' => $picture,
             'cni' => $cni,

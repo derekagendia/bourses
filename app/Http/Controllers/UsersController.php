@@ -74,4 +74,33 @@ class UsersController extends Controller
         User::find($id)->delete();
         return back()->with('status','Supression Reussi');
     }
+    public function profile()
+    {
+        return view('profile',['user' => User::find(auth()->user()->id)]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        if(User::where('email',$request->email)->count() >1){
+            return back()->with('error','Address Mail Existe deja');
+        }
+        $user = User::find(auth()->user()->id);
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        if ($request->password != null) {
+            if(!Hash::check($request->old_password,$user->password)){
+                return back()->with('error','Mots de passe de correspondent pas');
+            }
+            if ($request->password != $request->password_confirmation) {
+                return back()->with('error','Passwords dont Match');
+            }
+            $user->password = Hash::make($request->password);
+        }
+        // dd($request->email);
+        $user->save();
+
+        return back()->with('status','Profil Modifie avec success');
+    }
 }

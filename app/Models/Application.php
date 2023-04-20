@@ -22,6 +22,8 @@ class Application extends Model
         'med_certificate',
         'stamp',
         'picture',
+        'handicap',
+        'is_handicap',
         'status',
         'first_choice',
         'first_choice_center',

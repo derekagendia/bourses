@@ -52,6 +52,12 @@
                         <div class="mb-3">
                             <input type="text" class="form-control" placeholder="" required value="{{ $application->region }}" disabled>
                         </div>
+                        <div class="mb-3 row">
+                            <label for="" class="col-md-8">Avez-vous un handicap</label>
+                            <div class="">
+                                <input type="checkbox" class="form-control" name="handicap" value="1" @if($application->is_handicap == 1)checked @endif disabled>
+                            </div>
+                          </div>
 
                           </div>
                           <hr>
@@ -134,6 +140,9 @@
                             <li><a href="{{ asset('med_certificate/'.$application->med_certificate) }}" target="_blank">Certificat Medical</a></li>
                             <li><a href="{{ asset('stamp/'.$application->stamp) }}" target="_blank">Demande de timbre</a></li>
                             <li><a href="{{ asset('picture/'.$application->picture) }}" target="_blank">Photo</a></li>
+                            @if($application->is_handicap == 1)
+                            <li><a href="{{ asset('handicap/'.$application->handicap) }}" target="_blank">Justificatif de Handicap</a></li>
+                            @endif
                            </ol>
                            <div class="my-3">
                             <label for="exampleFormControlInput1" class="form-label">Statut</label>

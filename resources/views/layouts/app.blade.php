@@ -61,8 +61,8 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  d-flex  align-items-center">
-        <a class="navbar-brand" href="{{ url('/scolarships/national') }}">
-          <img src="{{asset('assets/img/brand/dark.svg')}}" height="40" class="navbar-brand-img" alt="...">
+        <a class="" href="{{ url('/scolarships/national') }}">
+            <img src="{{asset('assets/img/bourse1.png')}}" style="height:70px; width:auto" class="ml-4" alt="...">
         </a>
         <div class=" ml-auto ">
           <!-- Sidenav toggler -->
@@ -119,7 +119,12 @@
                 </a>
                 </li>
             @endcan
-
+            <li class="nav-item">
+                <a class="nav-link {{ request()->segment(1) == 'profile'?'active':'' }}" href="{{ url('/profile') }}">
+                    <i class="fa fa-user text-white"></i>
+                    <span class="nav-link-text text-white">Profile</span>
+                </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -214,34 +219,25 @@
 
 
       <!-- Footer -->
-      {{-- <footer class="footer pt-0">
+      <footer class="footer pt-0 px-5">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6">
             <div class="copyright text-center  text-lg-left  text-muted">
-              &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a> & <a href="https://themesberg.com?ref=creative-tim" class="font-weight-bold ml-1" target="_blank">Themesberg</a>
+                Concu par <a href="https://www.soulsaducam.com" class="font-weight-bold ml-1" target="_blank">Soulsaducam</a> &copy; {{ date('Y') }}
             </div>
           </div>
           <div class="col-lg-6">
             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
               <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                <a href="tel:+237699722414" class="nav-link" target="_blank">+237699722414</a>
               </li>
               <li class="nav-item">
-                <a href="https://themesberg.com" class="nav-link" target="_blank">Themesberg</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
+                <a href="tel:+237677454491" class="nav-link" target="_blank">+237677454491</a>
               </li>
             </ul>
           </div>
         </div>
-      </footer> --}}
+      </footer>
     </div>
   </div>
   <!-- Argon Scripts -->

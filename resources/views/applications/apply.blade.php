@@ -53,15 +53,24 @@
                           <div class="mb-3">
                               <input type="text" class="form-control" placeholder="Region" required name="region">
                           </div>
+                          <div class="mb-3">
+                              <input type="text" class="form-control" placeholder="Lieu de Naissance" required name="pob">
+                          </div>
+
                             <div class="input-group mb-3" title="Date de naissance">
                                 <span class="input-group-text" id="basic-addon1">
                                     <i class="fa fa-birthday-cake"></i>
                                 </span>
                                 <input type="date" class="form-control" placeholder="Date de naissance" required name="dob">
                             </div>
-                          <div class="mb-3">
-                              <input type="text" class="form-control" placeholder="Lieu de Naissance" required name="pob">
+                            <hr>
+                          <div class="mb-3 row">
+                            <label for="" class="col-md-8">Avez-vous un handicap</label>
+                            <div class="">
+                                <input type="checkbox" class="form-control" name="is_handicap" value="1">
+                            </div>
                           </div>
+
 
                           </div>
                           <hr>
@@ -174,6 +183,13 @@
                                     <input type="file" class="form-control" name="picture" required>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <label  id="basic-addon1">Jusificatif de Handicap</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="handicap">
+                                </div>
+                            </div>
+
 
                            </div>
                          </div>

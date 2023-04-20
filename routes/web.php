@@ -43,6 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/application/{type}/create',[ApplicationsController::class,'create']);
     Route::post('/application/store',[ApplicationsController::class,'store']);
     Route::get('/application/download/{id}',[ApplicationsController::class,'downloadPDF']);
+    Route::get('/profile',[UsersController::class,'profile']);
+    Route::post('/profile',[UsersController::class,'updateProfile']);
     Route::middleware(['can:manage_users'])->group(function ()
     {
         Route::get('/users/{type}',[UsersController::class,'index']);
